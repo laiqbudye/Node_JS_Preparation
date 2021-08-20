@@ -9,6 +9,8 @@ CLI:- (Command Line Interface) - A utility to type commands to your computer rat
   e.g Bash on linux, Command prompt on windows, Terminal on Mac
 
   
+IMP:-
+Node Js is a server technology, that is designed to be able to use JS to write server code
   
   
 Machine Code:- our code gets converted to machine code which is then read by the processor.
