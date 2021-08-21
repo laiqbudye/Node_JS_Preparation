@@ -12,6 +12,18 @@ Considering all these, Functions are first class citizens in JS.
 
 
 
+e.g
+
+greet.js
+  var greet = function() {
+    console.log("Hello")
+  }
+
+ module.exports = greet;   // exports greet from this file which can be imported in any other file
 
 
+
+app.js
+  var greet = require('./greet');    // require function provided by nodeJS which will return module.exports from specified file.. ie. greet function in this example
+  greet();    // Hello
 
