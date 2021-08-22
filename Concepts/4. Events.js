@@ -69,3 +69,31 @@ emtr.emit('greet');      // it emits(fires/broadcast) the event
 If we want to use nodeJs built-in event emitter then we need import it as below:-
    
    var Emitter = require('events');     // there is built-in events.js file which handles events 
+
+
+-----------------------------------------------------------------------------------------------------
+   
+   
+INHERITING FROM EVENT EMITTERS
+
+app.js
+
+var EventEmitter = require('events');   // nodejs in built event emitter
+var util = require('util');             // nodejs in built utils pkg which includes common utility methods 
+
+
+function Greetr() {
+   this.greeting = 'Hello World!';
+}
+
+util.inherits(Greetr, EventEmitter);  // inherits function stating that whatever object created using Greetr function constructor will have access to all props & methods of EventEmitter
+
+var greeter1 = new Greetr();
+
+greeter1.on('greet', function() {    // here 'on' is a method from events (EventEmitter) pkg, but as we has inherited Greetr from EventEmitter we can use that with greeter1..... it will search it on prototype chain & will find out on eventemitters prototype
+   console.log("Someone greeted!");
+})
+
+greeter1.emit('greet');
+
+greeter1.emit('greet', data);   // way to send data as well while emitting the event, this data will get as i/p for function written inside greeter1.on()
