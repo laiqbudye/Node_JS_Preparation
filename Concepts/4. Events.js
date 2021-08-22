@@ -12,8 +12,9 @@ there are two type of events in nodeJs
 
 
 
-
-
-
+Event Listener:-
+      - the code that responds to an event.
+      - in JS case, the listener will be a function.
+      - when an event happens, this function/listener will get invoked.
 
 
