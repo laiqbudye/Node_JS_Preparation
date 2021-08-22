@@ -51,15 +51,21 @@ var Emitter = require('./emitter');
 
 var emtr = new Emitter();
 
-emtr.on('greet', function() {
+emtr.on('greet', function() {             // it is a listener which will get execute when it listens greet event
     console.log("Somewhere, someone said hello");
 })
 
 
-emtr.on('greet', function() {
+emtr.on('greet', function() {    
     console.log("A greeting occured!");
 })
 
 console.log("Hello");
 
-emtr.emit('greet');
+emtr.emit('greet');      // it emits(fires/broadcast) the event
+
+---------------------------------------------------------------------------------------------------------
+   
+If we want to use nodeJs built-in event emitter then we need import it as below:-
+   
+   var Emitter = require('events');     // there is built-in events.js file which handles events 
