@@ -75,6 +75,7 @@ If we want to use nodeJs built-in event emitter then we need import it as below:
    
    
 INHERITING FROM EVENT EMITTERS
+Scenario 1:-
 
 app.js
 
@@ -97,3 +98,61 @@ greeter1.on('greet', function() {    // here 'on' is a method from events (Event
 greeter1.emit('greet');
 
 greeter1.emit('greet', data);   // way to send data as well while emitting the event, this data will get as i/p for function written inside greeter1.on()
+
+
+-----------------------------------------------------------------------------------------------------
+   
+Scenario 2:- 
+   as we saw in the Scenario 1 the newly created obj gets access to props & methods of both Greetr & EventEmitter function.
+   but in some case if EventEmitter got updated with some manually added props or methods then with above example our new object wont get those new methods.
+   to solve this issue we can follow the below approach.
+
+
+app.js
+
+var EventEmitter = require('events');   // nodejs in built event emitter
+var util = require('util');             // nodejs in built utils pkg which includes common utility methods 
+
+
+function Greetr() {
+   EventEmitter.call(this);     // here this is blank obj that gets created with new keyword, & same this is pointing to eventemitter, so it will get newly addded props inside it 
+   this.greeting = 'Hello World!';    // also greeting prop will get added to same this obj... hence it is complete inheritance we can say
+}
+
+util.inherits(Greetr, EventEmitter);  
+
+var greeter1 = new Greetr();
+
+greeter1.on('greet', function() {    // here 'on' is a method from events (EventEmitter) pkg, but as we has inherited Greetr from EventEmitter we can use that with greeter1..... it will search it on prototype chain & will find out on eventemitters prototype
+   console.log("Someone greeted!");
+})
+
+greeter1.emit('greet');
+   
+   
+-----------------------------------------------------------------------------------------------------
+   
+ Scenario 3:- 
+    Same example with Classes
+    
+      var EventEmitter = require('events');   // nodejs in built event emitter
+
+      class Greetr extends EventEmitter {
+         super();               // invoking parent class constructor.... same as EventEmitter.call(this); 
+         this.greeting = 'Hello World!';
+      }
+
+      
+      var greeter1 = new Greetr();
+
+      greeter1.on('greet', function() {    // here 'on' is a method from events (EventEmitter) pkg, but as we has inherited Greetr from EventEmitter we can use that with greeter1..... it will search it on prototype chain & will find out on eventemitters prototype
+         console.log("Someone greeted!");
+      })
+
+      greeter1.emit('greet');
+   
+   
+   
+   
+   
+ 
