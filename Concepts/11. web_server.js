@@ -46,4 +46,22 @@ In the previous example we have sent a normal plain text in respose, now we will
     }).listen(3000, '127.0.0.1');  // first param is port no. & second is host name
 
 
+------------------------------------------------------------------------------------------------------------
+
+in the above examples we have used readFileSync() function which is synchronous. i.e it wont go to the next line till it completes file reading.
+
+so if our file size is bigger then it will slow down performance of app. to avoid this we can use pipe 
+
+
+server.js
+    var http = require('http');
+    var fs = require('fs');    
+
+    http.createServer(function(req, res){
+
+        res.writeHead(200, {'Content-Type': 'text/html' });   
+        
+        fs.createReadStream(__dirname + '/index.html').pipe(res);   // here it will read file in chunks & give those chunks to res which is writable stream  
+
+    }).listen(3000, '127.0.0.1');  
 
