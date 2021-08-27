@@ -17,9 +17,27 @@ Major - when we add some big feature, or complete change of look n feel of our a
 
 here, number means something which is why it is called as Semantic Versioning.
   
-  
-  
-  
+
+When we create a new app then we can create a package.json using npm init command.
+
+
+
+to download any pkg 
+    npm install <pkg_name> --save   // --save will add an entry of that pkg under dependencies object
+
+    npm install <pkg_name> --save-dev    // -dev specifies that this is a developer dependency, it will add this pkg under devDependencies object
+
+
+
+there are some special characters gets added before the pkg version,
+    e.g 
+      dependencies: {
+        moment: "^2.10.6"
+      }
+
+    ^ - whenever new version of moment releases with PATCH or MINOR version update, it will automatically dwnload that. it wont dwnload on MAJOR update.
+    
+    ~ - it will get updated only when PATCH updates. no on MAJOR OR MINOR update
   
   
   
