@@ -19,9 +19,9 @@ app.get('/api', function(req, res) {        // URL: localhost:3000/api
   res.json({firstname: 'Laiq', lastname: 'Budye'});        
 })
 
-app.get('/person/:id', function(req, res) {        // URL: localhost:3000/person/123456
+app.get('/person/:id', function(req, res) {.........................        // URL: localhost:3000/person/123456
+  console.log(req.params.id);                      // this is a way to extract query params from URL, it will return 123456
   res.json({firstname: 'Laiq', lastname: 'Budye'});        
 })
 
 app.listen(port);
-
