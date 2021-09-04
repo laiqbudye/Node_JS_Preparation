@@ -11,7 +11,9 @@ Node js Features
   1. Very fast (built on google's V8 engine which is very fast in code execution)
   2. Single threaded but highly scalable
   3. No buffering (node js apps never buffers as it always returns data in chunks)
-
+  4. cross platform
+  5. asynchronous
+  
 
 CLI:- (Command Line Interface) - A utility to type commands to your computer rather than clicking.
   e.g Bash on linux, Command prompt on windows, Terminal on Mac
@@ -35,3 +37,10 @@ blocking vs non-blocking
      
      in the same way node also takes multiple requests at a same time, store them in an event loop & process them asynchronously.
  
+
+     
+     
+Single vs Multi thread (node is single threaded)
+     in a multi thread application every request is handled by different thread. all threads runs parallely.
+     in a single thread application only once thread handles all requests. (in node it handles all requests asynchronously)
+    
