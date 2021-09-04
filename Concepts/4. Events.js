@@ -154,5 +154,14 @@ greeter1.emit('greet');
    
    
    
+   ------------------------------------------------------------------------------------------------------------------------------------
    
+   MOST COMMON WAY TO USE EVENT EMITTERS
+   
+  var events = require('events');
+  var eventEmitter = new events.EventEmitter();     // binding EventEmitter to eventEmitter
+   
+  eventEmitter.on('name_of_event', eventHandler);   // listens for an event & executes a callback
+
+  eventEmitter.emit(name_of_event');    // fires an event
  
