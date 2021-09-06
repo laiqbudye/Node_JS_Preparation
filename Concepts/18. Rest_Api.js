@@ -17,3 +17,15 @@ REST standarises a way to of using the HTTP requests i.e for posting data we can
   app.delete('/api/person/:id', function(req, res) {
      // delete that person from DB
   })
+
+
+by default browser makes GET request. to make a post request we need to make post request explicitly.
+
+type of requests:-
+  1. GET - this is default one. it is used to get data from server
+
+  2. POST - it is used to post/store some data from client to server
+
+  3. PUT - it is used to update the data on server. i.e if the data is already available on server & we just want to update that.
+
+  4. DELETE - it is used to delete data.
