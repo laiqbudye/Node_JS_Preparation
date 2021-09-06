@@ -1,4 +1,7 @@
 NPM - node pkg manager
+npm is bundled with node js which means when you install node js npm comes automatically with it.
+it is a default pkg manager for node js
+it is completely written in js
 
 pkg mgmt system-
   software that automates installing & updating pkgs.
@@ -38,9 +41,4 @@ there are some special characters gets added before the pkg version,
     ^ - whenever new version of moment releases with PATCH or MINOR version update, it will automatically dwnload that. it wont dwnload on MAJOR update.
     
     ~ - it will get updated only when PATCH updates. no on MAJOR OR MINOR update
-  
-  
-  
-  
-  
   
