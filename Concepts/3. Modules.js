@@ -27,3 +27,37 @@ app.js
   var greet = require('./greet');    // require function provided by nodeJS which will return module.exports from specified file.. ie. greet function in this example
   greet();    // Hello
 
+
+
+
+there are 3 types of modules in node js.
+  1. core modules
+      these are provided by node itself. e.g fs module to work with file system
+      
+      const fs = require('fs');    // this fs module is a core module of node js
+      fs.writeFile('notes.txt', 'Hello World');
+
+
+  2. modules that we create in different files
+      these are developer created modules to achieve some functionality that we can import from one file to another file.
+      
+      e.g
+         utils.js
+            const name = "LAIQ";
+            module.exports = name;
+
+        index.js
+            const n = require('./utils.js');
+            console.log(n);     // LAIQ
+
+    
+  3. third party modules (npm pkgs)
+      to import from 3rd party pkgs, first we need to install that pkg using npm
+          - npm i validator     // a pkg which validates given string
+          
+      index.js
+         const validator = require('validator');
+         console.log(validator.isEmail('laiqbudye@gmail.com'));
+
+        
+    
