@@ -54,6 +54,7 @@ app.listen(port);
   
   
 How to serve static assets (assets from public folder) using express
+Static pages:- static pages are same at all times i.e they dont change until n unless we (developer/admin) change the content.
 
 both these variables comes with node js by default
 
@@ -82,3 +83,43 @@ app.listen(3000, () => {
 
 in the above example when user hits localhost:3000/ from browser it will show contents from public/index.html file.
 
+--------------------------------------------------------------------------------------------------------------------
+
+DYNAMIC page with templating
+
+there is a pkg called 'hbs' (handlebars) which can be use to dynamically display data on webpage.
+
+
+index.hbs
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    hello {{title}} {{name}}     // here title & name are passing from index.js using handlebars
+</body>
+</html>
+
+
+
+
+
+index.js
+const express = require('express');
+const path = require('path');
+
+const app = express();
+
+app.set('view engine', 'hbs');   // here it is seting handlebars as a view engine for templating
+
+app.use('/', (req,res)=>{
+    res.render('index', {
+        title: 'Mr.',    // passsing dynamic values to index.hbs
+        name: 'Laiq'
+    })
+});
+
+app.listen(3000, () => {
+    console.log("Server started on port 3000");
+})
