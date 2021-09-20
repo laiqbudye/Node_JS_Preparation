@@ -37,8 +37,48 @@ app.get('/', function(req, res) {          // whenever URL matches with this end
 
 app.get('/api', function(req, res) {        
   res.json({firstname: 'Laiq', lastname: 'Budye'});        
+  res.send("Hello");  // it returns string in response to client
+  
+  res.send("<h1> Hello </h1>");     // it returns HTML to client
+  
+  res.send({
+    firstname: 'Laiq',    // here express automatically strigify our object & send it to client i.e {"firstname":"Laiq","lastname":"Budye"}
+    lastname: 'Budye'
+  });  
 })
 
 app.listen(port);
 
+
+-------------------------------------------------------------------------------------------------------------------
+  
+  
+How to serve static assets (assets from public folder) using express
+
+both these variables comes with node js by default
+
+console.log(__dirname);   // this returns current directory path  E:\STUDY DATA PROFESSIONAL\Node JS Excercises\static_assets
+console.log(__filename);  // this returns current file path  E:\STUDY DATA PROFESSIONAL\Node JS Excercises\static_assets\index.js
+console.log(path.join(__dirname, '/public'));  // this joins the path with directory path   E:\STUDY DATA PROFESSIONAL\Node JS Excercises\static_assets\public
+
+
+e.g
+
+const express = require('express');
+const path = require('path');
+
+const app = express();
+
+app.use(express.static(path.join(__dirname, '/public')));  // xpress static is in built middleware which serves static files
+console.log(path.join(__dirname, '/public'));     // E:\STUDY DATA PROFESSIONAL\Node JS Excercises\static_assets\public
+
+console.log(__dirname);
+console.log(__filename);
+
+app.listen(3000, () => {
+    console.log("Server started on port 3000");
+});
+
+
+in the above example when user hits localhost:3000/ from browser it will show contents from public/index.html file.
 
