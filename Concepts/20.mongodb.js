@@ -113,7 +113,7 @@ MongoClient.connect(connectionURL, {useNewUrlParser: true}, (error, client) => {
      db.restaurant.updateOne(
       { "name" : "Central Perk Cafe" },
       { 
-        $set: { 
+        $set: {             // when using mongoose, we dont need to add this $set n other things, this is taken care by mongoose internally
           "violations" : 3 
         } 
       }
