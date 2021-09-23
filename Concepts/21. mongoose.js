@@ -31,3 +31,51 @@ mongoose
   }).catch(err => {
   
   })
+
+------------------------------------------------------------------------------------------------
+
+Data validation & Sanitization
+  we can validate data with mongoose before submitting it to DB.
+  
+  e.g
+  
+  const User = mongoose.connect('User', {    
+      name: {     
+        type: String, 
+        required: true    // this field is mandatry now
+      },
+      
+      age: {
+        type: Number,
+        validate(value){   // validate is a function for validating data. value is data passed/entered by user 
+          if(value < 0){
+            throw new Error('Age must be a positive number');
+          }
+        }
+      },
+      
+      email: {
+        type: String,
+        required: true,
+         validate(value){   // validate is a function for validating data. value is data passed/entered by user 
+          if(!validator.isEmail(value)){     // validator is npm pkg which contains common methods to validate data like isEmail, isCredit
+            throw new Error('Email is invalid');
+          }
+        }
+      }
+    
+     password: {
+        type: String,
+        required: true,
+        minLength: 7,
+        validate(value){   // validate is a function for validating data. value is data passed/entered by user 
+          if(value.toLowerCase().includes('password')){     
+            throw new Error('password can not contain password keyword');
+          }
+        }
+      }
+  })
+  
+  
+
+
